@@ -6,8 +6,8 @@ import threading
 
 CLIENT_NAME_FILE = './client_name.txt'
 PING_INTERVAL = 3  # Thời gian ping (giây)
-# SERVER_URL = 'http://26.35.184.44:5000'  # Địa chỉ máy chủ
-SERVER_URL = 'http://localhost:5000'
+SERVER_URL = 'http://26.35.184.44:5000'  # Địa chỉ máy chủ
+# SERVER_URL = 'http://localhost:5000'
 
 PING_ENDPOINT = '/ping'
 UPLOAD_ENDPOINT = '/upload'
