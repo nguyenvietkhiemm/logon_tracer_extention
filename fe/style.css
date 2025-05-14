@@ -71,3 +71,39 @@ tbody tr:hover {
     color: red;
     font-weight: bold;
 }
+
+.actions {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+button#export-btn {
+    padding: 10px 18px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button#export-btn:hover {
+    background-color: #45a049;
+}
+
+.status-text {
+    font-style: italic;
+    font-size: 14px;
+    color: #333;
+}
+
+.status-text.success {
+    color: green;
+}
+
+.status-text.error {
+    color: red;
+}
