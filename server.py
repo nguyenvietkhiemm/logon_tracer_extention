@@ -1,11 +1,14 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import os
 import threading
 import time
+from flask import send_file
+# import export
 
 app = Flask(__name__)
 UPLOAD_FOLDER = './uploads'
-
+CORS(app)
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
 
@@ -27,9 +30,11 @@ def ping():
     request_data = False
     if client_states[client_name] >= PING:
         request_data = True
-        client_states[client_name] = 0
-        
-    client_states[client_name]+=1
+        # client_states[client_name] = 0
+
+    if (client_states[client_name] < PING):
+        client_states[client_name] += 1
+
     print(client_states)
     return jsonify({'request_data': request_data})
 
@@ -50,13 +55,25 @@ def upload_file():
             app.config['UPLOAD_FOLDER'], f"{client_name}_{file.filename}")
         file.save(filename)
 
+        # Reset sau khi upload xong
+        client_states[client_name] = 0
+
         return jsonify({'message': f"Đã nhận file '{file.filename}' từ client '{client_name}'"}), 200
     return jsonify({'error': 'Something went wrong'}), 500
 
 
 @app.route('/', methods=['GET'])
 def server_info():
-    return "Đây là địa chỉ máy chủ. Chỉ có thể gửi dữ liệu thôi 🌼🌼🌼😼😼😼"
+    return send_file('./fe/index.html')
+
+
+@app.route('/clients', methods=['GET'])
+def get_clients():
+    return jsonify(client_states)
+
+# @app.route('/export', methods=['GET'])
+# def get_clients():
+#     return jsonify(client_states)
 
 
 if __name__ == '__main__':

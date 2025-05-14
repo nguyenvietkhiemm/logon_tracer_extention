@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Monitoring Dashboard</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Client Monitoring Dashboard</h1>
+        <div id="client-list">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Client Name</th>
+                        <th>Ping Count</th>
+                        <th>Request Data</th>
+                        <th>Status</th> <!-- Thêm dòng này -->
+                    </tr>
+                </thead>                
+                <tbody id="client-table-body">
+                    <!-- Dữ liệu client sẽ được thêm bằng JavaScript -->
+                </tbody>
+            </table>
+        </div>
+        <p id="error-message" class="error hidden"></p>
+    </div>
+    <script src="./fe/script.js"></script>
+</body>
+</html>
